@@ -25,7 +25,7 @@ Route::post("{$ns}/highlight", function(Request $request) use ($ns) {
 
     if (Config::get("{$ns}.cache-on-server")) {
         return Cache::remember(
-            "tempest.{$ns}.highlight.{$hash}",
+            "{$ns}.highlight.{$hash}",
             Config::get("{$ns}.cache-on-server-ttl"),
             $generate,
         );
