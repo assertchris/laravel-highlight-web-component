@@ -1,11 +1,13 @@
 <?php
 
-namespace Tempest\Wcode;
+namespace AC\LaravelHighlightWebComponent;
 
 use Illuminate\Support\ServiceProvider;
 
-class WcodeProvider extends ServiceProvider
+class Provider extends ServiceProvider
 {
+    const string NS = 'highlight-web-component';
+
     public function boot(): void
     {
         $this->loadsConfig();
@@ -14,7 +16,8 @@ class WcodeProvider extends ServiceProvider
 
     private function loadsConfig(): void
     {
-        $ns = 'w-code';
+        $ns = static::NS;
+
         $file = "{$ns}.php";
         $path = $this->join(__DIR__, '..', 'config', $file);
 

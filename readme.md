@@ -1,18 +1,18 @@
-# `<w-code lang="php" />`
+# Laravel Highlight Web Component
 
 This is a Laravel plugin which introduces a custom [Web Component](https://developer.mozilla.org/en-US/docs/Web/API/Web_components) for highlighting code using [tempest/highlight](https://github.com/tempestphp/highlight).
 
 To get started:
 
 ```txt
-composer require tempest/w-code
+composer require assertchris/laravel-highlight-web-component
 ```
 
 Import and use the custom component:
 
 ```js
-import Wcode from '../../vendor/tempest/w-code/src/w-code.js';
-customElements.define('w-code', Wcode);
+import Component from '../../vendor/assertchris/laravel-highlight-web-component/src/component.js';
+customElements.define('w-code', Component);
 ```
 
 Use it in your templates:
@@ -31,5 +31,5 @@ Use it in your templates:
 You can view and customise the config by publishing the vendor config files:
 
 ```txt
-php artisan vendor:publish --provider=Tempest\\Wcode\\WcodeProvider
+php artisan vendor:publish --provider=AC\\LaravelHighlightWebComponent\\Provider
 ```

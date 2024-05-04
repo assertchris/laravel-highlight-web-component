@@ -1,5 +1,5 @@
 {
-    "name": "tempest/w-code",
+    "name": "assertchris/laravel-highlight-web-component",
     "description": "A Laravel plugin with a custom Web Component for highlighting code, using tempest/highlight.",
     "license": "MIT",
     "authors": [
@@ -22,15 +22,12 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "Tempest\\Wcode\\": "src"
+            "AC\\LaravelHighlightWebComponent\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tempest\\Wcode\\Tests\\": "tests",
-            "Workbench\\App\\": "workbench/app/",
-            "Workbench\\Database\\Factories\\": "workbench/database/factories/",
-            "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
+            "AC\\LaravelHighlightWebComponent\\Tests\\": "tests"
         }
     },
     "config": {
@@ -39,7 +36,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Tempest\\Wcode\\WcodeProvider"
+                "AC\\LaravelHighlightWebComponent\\Provider"
             ]
         }
     },

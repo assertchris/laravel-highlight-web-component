@@ -18,6 +18,8 @@ const cyrb53 = function(str, seed = 0) {
     return 4294967296 * (2097151 & h2) + (h1 >>> 0);
 };
 
+const ns = 'highlight-web-component';
+
 export default class extends HTMLElement {
     hashes = {}
 
@@ -48,7 +50,7 @@ export default class extends HTMLElement {
     async build(language, code) {
         this.style.visibility = 'hidden';
 
-        const response = await axios.post('/__tempest/w-code/highlight', {
+        const response = await axios.post(`/${ns}/highlight`, {
             language,
             code,
         });
@@ -62,11 +64,11 @@ export default class extends HTMLElement {
     }
 
     async config() {
-        const stored = localStorage.getItem('tempest.w-code.config');
+        const stored = localStorage.getItem(`${ns}.config`);
 
         if (!stored) {
-            const response = await axios.get('/__tempest/w-code/config');
-            localStorage.setItem('tempest.w-code.config', JSON.stringify(response.data));
+            const response = await axios.get(`/${ns}/config`);
+            localStorage.setItem(`${ns}.config`, JSON.stringify(response.data));
             return response.data
         }
 
@@ -85,7 +87,7 @@ export default class extends HTMLElement {
         const key = `${language}${code}`;
 
         if (!this.hashes[key]) {
-            this.hashes[key] = 'tempest.w-code.highlight.' + cyrb53(key);
+            this.hashes[key] = `${ns}.highlight.${cyrb53(key)}`;
         }
 
         return this.hashes[key];
@@ -96,7 +98,7 @@ export default class extends HTMLElement {
         code.innerHTML = highlighted;
 
         const pre = document.createElement('pre');
-        pre.classList.add('tempest-w-code-code-wrapper');
+        pre.classList.add(`${ns}-wrapper`);
         pre.appendChild(code);
 
         return pre;

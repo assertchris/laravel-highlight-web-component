@@ -1,19 +1,19 @@
 <?php
 
-namespace Tempest\Wcode\Tests;
+namespace AC\LaravelHighlightWebComponent\Tests;
 
+use AC\LaravelHighlightWebComponent\Provider;
 use Orchestra\Testbench\TestCase;
-use Tempest\Wcode\WcodeProvider;
 
 class RoutesTest extends TestCase
 {
     public function testRoutesAreRegistered(): void
     {
-        $response = $this->get('__tempest/w-code/config');
+        $response = $this->get('highlight-web-component/config');
 
         $response->assertJsonFragment(['cache-on-client' => true]);
 
-        $response = $this->post('__tempest/w-code/highlight', [
+        $response = $this->post('highlight-web-component/highlight', [
             'language' => 'php',
             'code' => 'print "hello world";'
         ]);
@@ -24,7 +24,7 @@ class RoutesTest extends TestCase
     protected function getPackageProviders($app): array
     {
         return [
-            WcodeProvider::class,
+            Provider::class,
         ];
     }
 }
