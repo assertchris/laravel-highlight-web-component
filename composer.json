@@ -1,5 +1,6 @@
 {
     "name": "assertchris/laravel-highlight-web-component",
+    "version": "1.0.3",
     "description": "A Laravel plugin with a custom Web Component for highlighting code, using tempest/highlight.",
     "license": "MIT",
     "authors": [
